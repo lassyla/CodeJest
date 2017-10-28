@@ -104,18 +104,17 @@ var scenario = {
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["examinetrash", "advanceTo(trashscenario.one)"],
             ["examinetrashcan", "advanceTo(trashscenario.one)"],
-            ["examinepaper", "advanceTo(paperscenario.one)"],
-            ["examinesheets", "advanceTo(paperscenario.one)"],
-            ["examinepapersheets", "advanceTo(paperscenario.one)"],
             ["examinelaptop", "advanceTo(laptopscenario.one)"],
             ["examinewallplaque", "advanceTo(wallscenario.one); codeBoxOn();"],
             ["examinewall", "advanceTo(wallscenario.one); codeBoxOn();"],
             ["examinepile", "advanceTo(pilescenario.one); codeBoxOn();"],
             ["examinepaper", "advanceTo(pilescenario.one); codeBoxOn();"],
-            ["examinewtop", "advanceTo(topscenario.one); codeBoxOn();"]
+            ["examinewtop", "advanceTo(topscenario.one); codeBoxOn();"],
+            ["examinedoor","advanceTo(door.one);]
         ]
     }
 };
+           
 
 var lightbulbscenario = {
     one: {
@@ -383,12 +382,80 @@ var pilescenario = {
             backToStart,
         ],
     }
+<<<<<<< HEAD
     
+=======
+}
+
+var door = {
+  one: {
+    text: "You walk towards the door through hordes of paper, coming to a stop in front of the plaque. It reads<p>float count = 0;<br>int key;<br>int num;<br>\\\\num is the number on the door, the rest is up to you<\p>"
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["key=112;"],
+    correctScenario: "advanceTo(door.two)",
+  two: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["whilenum!=key:"],
+    correctScenario: "advanceTo(door.three)",
+  },
+  three: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["count+=1"],
+    correctScenario: "advanceTo(door.four)",
+  },
+  four: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["ifcount%2==1"],
+    correctScenario: "advanceTo(door.five)",
+  },  
+  five: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["returncount/2"],
+    correctScenario: "advanceTo(door.six)",
+  },
+  six: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["else:"],
+    correctScenario: "advanceTo(door.seven)",
+  },
+  seven: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["returncount"],
+    correctScenario: "advanceTo(door.eight)",
+  },    
+  eight: {
+    text: "ENDING: The door creaks open slowly. Relieved, you step out of the room into the soft green grass. Relieved to see nature once more, you gaze around taking in the bright blue sky, chirping birds, and fresh air. After a few moments however, your eyes close and open into a familiar yet distinct inky blackness. You let out a sigh and think simply, “Here we go again, time for part two!"
+  }
+
+
+>>>>>>> 7cd5edce3ce55a81e2d03f31c511d54bedb402d1
 }
 
 
 currentScenario = scenario.one;
 advanceTo(currentScenario);
+<<<<<<< HEAD
 addRiddle('Why is this room like this? It hates me. Count. The answer was naming the variable count all along. They’re variables! It doesn’t matter what they’re called, it all functions the same. It could be called anything, but for some reason it only accepts count. '); 
 addRiddle('Int, int int Look at all the ints in the world. Intersect, integrity, intuition, integer. Ah integers, theyre so whole and nice.  Such nice numbers sometimes negatives,  sometimes positive but always whole.'); 
 addRiddle("Loopity loops around we go. Again and again and again and again. For is as long starting with 0 to whatever you need, up you increment 1. But while, while up or down you go but when you’ll end you’ll never know… until you end that is."); 
@@ -396,3 +463,5 @@ addRiddle();
 addRiddle("Equals equals everywhere. One equals to set but two to compare. One is alone, a matchmaker on it’s own, destined to set to things together. Two, however, brings the gossip about to compare whether equal or not. "); 
 addRiddle("Floats and integers go hand and hand yet clash as the difference is clear. Floats can go beyond the whole number, while integers cannot split into anything but whole."); 
 addRiddle("! Oh ! You excite me so much. You split up the double equals and turn equals into nots."); 
+=======
+>>>>>>> 7cd5edce3ce55a81e2d03f31c511d54bedb402d1
