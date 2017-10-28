@@ -167,12 +167,12 @@ var trashscenario = {
     },
     two: {
         image: "images/trash2.png",
-        text: "The plaque has the words int ramenBowls=30 . Next to the plaque is a keypad.",
+        text: "The plaque has the words int trash=30 . Next to the plaque is a keypad.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["back", "advanceTo(trashscenario.two); codeBoxOff();"],
         ],
-        correctAnswers: ["ramenBowls=0", "skip"],
+        correctAnswers: ["trash=0;", "trash=0", "skip"],
         correctScenario: "advanceTo(trashscenario.three)"
     },
     three: {
