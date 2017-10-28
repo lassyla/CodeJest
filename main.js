@@ -320,21 +320,87 @@ var wallscenario = {
 }
 
 
-var bookscenario = {
-
-
-
+var topscenario = {
+  one:{
+    Text: “Going towards the table the top suddenly stutters to a stop. For a few seconds it lays still on the table before once again it begins to spin. Underneath the top lies a plaque. ”,
+     functionNames: [
+        helpOptions,
+        backToStart,
+        ["examineplaque", "advanceTo(topscenario.two); codeBoxOn();"],
+      ],
+    },
+    two:{
+      Text:"The plaque reads simply:<p>int x;<br>While spinning==True:<br>x;<br>\\\Change a single line  <\p>You place your hands on the keypad.”,
+      functionNames: [
+        helpOptions,
+        backToStart,
+      ],
+      correctAnswers: [x=x+1,x+=1,x=x++, "skip"], 
+      correctScenario: "advanceTo(wallscenario.three); codeBoxOff();",
+  three:{    //<span style="font-family:Consolas">
+      Text:”You wait at the top spins until finally it comes to a stop. 241 is returned as a number. 
+  ”}
+      functionNames: [
+        helpOptions,
+        backToStart,
+      ],
 }
 
-var paperscenario = {
-    one: {
 
 
-    }
-
+var topscenario={
+one:{
+	text: “Going towards the table the top suddenly stutters to a stop. For a few seconds it lays still on the table before once again it begins to spin. Underneath the top lies a plaque. ”,
+    functionNames: [
+      helpOptions,
+      backToStart,
+      ["examineplaque", "advanceTo(topscenario.two); codeBoxOn();"],
+    ],
+  },
+  two:{
+    Text:"The plaque reads simply:<p>int x;<br>While spinning==True:<br>x;<br>\\\Change a single line  <\p>You place your hands on the keypad.”,
+    functionNames: [
+      helpOptions,
+      backToStart,
+    ],
+    correctAnswers: ["x=x+1,x++,x+=1", "skip"], 
+    correctScenario: "advanceTo(topscenario.three); codeBoxOff();",
+three:{   
+    text:""}
+    functionNames: [
+      helpOptions,
+      backToStart,
+    ],
 }
 
-var bagscenario = {
+
+var pilescenario={
+one:{
+	text: "You search through the pile to find a sealed notepad. Pulling it out, you place it on the table next to the disconnected keypad and plaque. Instantly, the plaque whirls to life.",
+   functionNames: [
+      helpOptions,
+      backToStart,
+      ["examineplaque", "advanceTo(pilescenario.two); codeBoxOn();"],
+    ],
+  },
+  two:{
+    text:"The plaque reads simply:<p> int pageNum=0;<b>for (): <b>#num is the number on the door, the rest is up to you
+  <\p>You place your hands on the keypad.”,
+    functionNames: [
+      helpOptions,
+      backToStart,
+    ],
+    correctAnswers: [for (int pageNum=0; pageNum<151; pageNum++),for (int pageNum=0; pageNum<151; pageNum+=1),for (int pageNum=0; pageNum<151; pageNum=pageNum+1), "skip"], 
+    correctScenario: "advanceTo(pilescenario.three); codeBoxOff();",
+three:{  Text:”The notepad flips page by page until finally it stops at page 150. It reads: <p>
+Within the artificial lights the answers await. But each light holds a different heart. To solve the first know what remains is the percent and the 3 marks the x on the spot. </p>
+”}
+    functionNames: [
+      helpOptions,
+      backToStart,
+    ],
+}
+
 
 
 }
