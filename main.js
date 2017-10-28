@@ -371,34 +371,32 @@ three:{
       helpOptions,
       backToStart,
     ],
-}
+  }
 
 
 var pilescenario={
-one:{
-	text: "You search through the pile to find a sealed notepad. Pulling it out, you place it on the table next to the disconnected keypad and plaque. Instantly, the plaque whirls to life.",
-   functionNames: [
+  one:{
+	text: "You search through the pile to find a sealed notepad. Pulling it out, you place it on the table next to the disconnected keypad and plaque. Instantly, the plaque whirls to life.",    functionNames: [
       helpOptions,
       backToStart,
       ["examineplaque", "advanceTo(pilescenario.two); codeBoxOn();"],
     ],
   },
   two:{
-    text:"The plaque reads simply:<p> int pageNum=0;<b>for (): <b>#num is the number on the door, the rest is up to you
-  <\p>You place your hands on the keypad.”,
+    text:"The plaque reads simply:<p> int pageNum=0;<b>for (): <b>#num is the number on the door, the rest is up to you<\p>You place your hands on the keypad.”,
     functionNames: [
       helpOptions,
       backToStart,
     ],
-    correctAnswers: [for (int pageNum=0; pageNum<151; pageNum++),for (int pageNum=0; pageNum<151; pageNum+=1),for (int pageNum=0; pageNum<151; pageNum=pageNum+1), "skip"], 
+    correctAnswers: ["for (int pageNum=0; pageNum<151; pageNum++)","for (int pageNum=0; pageNum<151","pageNum+=1)","for (int pageNum=0; pageNum<151; pageNum=pageNum+1)", "skip"], 
     correctScenario: "advanceTo(pilescenario.three); codeBoxOff();",
-three:{  Text:”The notepad flips page by page until finally it stops at page 150. It reads: <p>
-Within the artificial lights the answers await. But each light holds a different heart. To solve the first know what remains is the percent and the 3 marks the x on the spot. </p>
-”}
+  three:{  
+    text:"The notepad flips page by page until finally it stops at page 150. It reads: <p>Within the artificial lights the answers await. But each light holds a different heart. To solve the first know what remains is the percent and the 3 marks the x on the spot. </p>",
     functionNames: [
       helpOptions,
       backToStart,
     ],
+  }
 }
 
 
