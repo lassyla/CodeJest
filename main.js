@@ -1,10 +1,11 @@
 //HTML element variables
 var image = document.getElementById("image");
 var text = document.getElementById("text");
-var hintText = document.getElementById("hinttext");
+var hintText = document.getElementById("hintText");
 var buttonBox = document.getElementById('buttonBox');
 var textBox = document.getElementById('textBox');
 var codeTextBox = document.getElementById('codeTextBox');
+var noteList = document.getElementById('noteList');
 
 //player variables
 var currentScenario;
@@ -48,11 +49,11 @@ var parseInput = function(input) {
 
 var changeText = function(words) {
     text.innerHTML = words;
-    hinttext.innerHTML = "";
+    hintText.innerHTML = "";
 };
 
 var changeHintText = function(words) {
-    hinttext.innerHTML = words;
+    hintText.innerHTML = words;
 };
 
 var changeButtons = function(buttonList) {
@@ -74,6 +75,13 @@ var codeBoxOn = function() {
 
 var codeBoxOff = function() {
     codeTextBox.style.visibility = "hidden";
+}
+
+var addRiddle = function(riddle) {
+    var child = document.createElement('div'); 
+    child.id = "riddle"; 
+    child.innerHTML = riddle; 
+    noteList.appendChild(child); 
 }
 
 scenario = {}
@@ -98,6 +106,7 @@ var scenario = {
             ["examinepaper", "advanceTo(paperscenario.one)"],
             ["examinesheets", "advanceTo(paperscenario.one)"],
             ["examinepapersheets", "advanceTo(paperscenario.one)"],
+            ["examinelaptop", "advanceTo(laptopscenario.one)"]
         ]
     }
 };

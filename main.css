@@ -7,9 +7,31 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-#image {
-  height: 500px;
+#noteList{
+    overflow-y: scroll; 
+    width: 20%; 
+    height: 85%; 
+    position: absolute;
+    right: 2%; 
+    text-align: center; 
+    border: .1em solid white; 
 }
+
+#riddle{ 
+    font-size: .75em; 
+    text-align: center; 
+    padding: 5%; 
+    background: gray; 
+    margin-top: .35em; 
+}
+
+#center{
+    position: absolute; 
+    left: 7%; 
+    width: 65%; 
+    text-align: center;     
+}
+
 input {
   width: 100%;
   height: 30px;
@@ -18,7 +40,7 @@ input {
   margin-top:15px;
 }
 
-#hinttext{
+#hintText{
     font-size: 1em; 
     color: gray; 
 }
