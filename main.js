@@ -112,10 +112,20 @@ var scenario = {
             ["examinewall", "advanceTo(wallscenario.one); codeBoxOn();"],
             ["examinepile", "advanceTo(pilescenario.one); codeBoxOn();"],
             ["examinepaper", "advanceTo(pilescenario.one); codeBoxOn();"],
-            ["examinewtop", "advanceTo(topscenario.one); codeBoxOn();"]
+            ["examinewtop", "advanceTo(topscenario.one); codeBoxOn();"],
+            ["examinedoor","advanceTo(door.one);]
         ]
     }
 };
+            
+var paperscenario = {
+    one: 
+            text: "Why is this room like this? It hates me. Count. The answer was naming the variable count all along. They’re variables! It doesn’t matter what they’re called, it all functions the same. It could be called anything, but for some reason it only accepts count. Int, int int Look at all the ints in the world. Intersect, integrity, intuition, integer. Ah integers, they're so whole and nice. Such nice numbers sometimes negatives, sometimes positive but always whole. “Words a character and a character in a string… will hold humanity forever spellbound” what a nice song. Thank god for earbuds and music keeping me sane! Loopity loops around we go. Again and again and again and again. For is as long starting with 0 to whatever you need, up you increment 1. But while, while up or down you go but when you’ll end you’ll never know… until you end that is. Equals equals everywhere. One equals to set but two to compare. One is alone, a matchmaker on it’s own, destined to set to things together. Two, however, brings the gossip about to compare whether equal or not. Floats and integers go hand and hand yet clash as the difference is clear. Floats can go beyond the whole number, while integers cannot split into anything but whole. ! Oh ! You excite me so much. You split up the double equals and turn equals into nots.",
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+}
 
 var lightbulbscenario = {
     one: {
@@ -383,7 +393,68 @@ var pilescenario = {
             ],
         }
     }
+}
 
+var door = {
+  one: {
+    text: "You walk towards the door through hordes of paper, coming to a stop in front of the plaque. It reads<p>float count = 0;<br>int key;<br>int num;<br>\\\\num is the number on the door, the rest is up to you<\p>"
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["key=112;"],
+    correctScenario: "advanceTo(door.two)",
+  two: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["whilenum!=key:"],
+    correctScenario: "advanceTo(door.three)",
+  },
+  three: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["count+=1"],
+    correctScenario: "advanceTo(door.four)",
+  },
+  four: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["ifcount%2==1"],
+    correctScenario: "advanceTo(door.five)",
+  },  
+  five: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["returncount/2"],
+    correctScenario: "advanceTo(door.six)",
+  },
+  six: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["else:"],
+    correctScenario: "advanceTo(door.seven)",
+  },
+  seven: {
+  functionNames: [
+    helpOptions,
+    backToStart,
+    ],
+    correctAnswers: ["returncount"],
+    correctScenario: "advanceTo(door.eight)",
+  },    
+  eight: {
+    text: "ENDING: The door creaks open slowly. Relieved, you step out of the room into the soft green grass. Relieved to see nature once more, you gaze around taking in the bright blue sky, chirping birds, and fresh air. After a few moments however, your eyes close and open into a familiar yet distinct inky blackness. You let out a sigh and think simply, “Here we go again, time for part two!"
+  }
 
 
 }
