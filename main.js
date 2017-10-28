@@ -293,9 +293,36 @@ var laptopscenario = {
     
 }
 
+
 var wallscenario = {
-    
+  one: {
+    text: "Unlike normal, the plaque has no obvious object next to it. You can just make out the barely visible words pulsing lightly. They seem to say <p> String status = \“Invisible\”; <\p> As normal however, there is a keypad. Maybe you should touch it.",
+    functionNames: [
+      helpOptions,
+      backToStart,
+      ["touchkeypad", "advanceTo(wallscenario.two); codeBoxOn();"],
+    ],
+  },
+  two:{
+    //<span style="font-family:Consolas">
+    text:"A box materializes in front of you. Although worn and rusted, the image of a plaid dragon curling around sides is unmistakeable. Centered in the front are the words <p>If luck==10: <br>&nbsp&nbsp&nbsp boxUnlock=True; <br> Else: <br>&nbsp&nbsp&nbsp boxUnlock=False;<br>\\\With only one line change allowed, the outside can change but the inside is locked <\span><\p> On the side of the box curled in the dragon's talons is a small keypad. You place your hand on the keypad. What do you want to enter?",
+    functionNames: [
+      helpOptions,
+      backToStart,
+      ["placehandonkeypad", "advanceTo(wallscenario.two);"],
+    ],
+    correctAnswers: ["10", "skip"], 
+    correctScenario: "advanceTo(wallscenario.three); codeBoxOff();"
+  },
+  three: {
+    text:"The dragon uncoils the the box unlocks revealing another sheet of paper: \"The PEMDAS comes to play once again as operations never truly go away. Times is times and adds is adds however squares and roots are not quite the same. Let x be 5 and y be 10 and the second will come to play\".",
+    functionNames: [
+      helpOptions,
+      backToStart,
+    ],
+  } 
 }
+
 
 var bookscenario = {
     
