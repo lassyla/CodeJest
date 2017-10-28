@@ -40,6 +40,13 @@ input {
   margin-top:15px;
 }
 
+#codeTextBox {
+    visibility:hidden; 
+    font-family:Courier New;
+    color:green; 
+    background-color:black
+}
+
 #hintText{
     font-size: 1em; 
     color: gray; 
