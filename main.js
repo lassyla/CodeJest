@@ -1,5 +1,5 @@
 //HTML element variables
-var images = document.getElementById("images");
+var image = document.getElementById("image");
 var text = document.getElementById("text");
 var hintText = document.getElementById("hinttext");
 var buttonBox = document.getElementById('buttonBox');
@@ -55,10 +55,6 @@ var changeHintText = function(words) {
     hinttext.innerHTML = words;
 };
 
-var changeImage = function(img) {
-    images.style.backgroundImage = "url(" + img + ")";
-};
-
 var changeButtons = function(buttonList) {
     buttonBox.innerHTML = "";
     for (var i = 0; i < buttonList.length; i++) {
@@ -67,9 +63,8 @@ var changeButtons = function(buttonList) {
 };
 
 var advanceTo = function(nextScenario) {
-    //changeImage(nextscenario.image)
-    console.log(nextScenario)
-    changeText(nextScenario.text)
+    image.src = nextScenario.image;
+    changeText(nextScenario.text) 
     currentScenario = nextScenario;
 };
 
@@ -85,7 +80,7 @@ scenario = {}
 
 var scenario = {
     one: {
-        image: "https://s9.postimg.org/eceo9mp73/5860028206_d66810105f_b.jpg", //dog
+        image: "images/1.png", 
         text: "The room is dark all around. A chill breeze runs through the room resulting in a quiet eerie whistling sound. In the corner of your eye, you can barely make out something that appears to be glowing softly.",
         functionNames: [
             ["help", "changeHintText('commands: help, examine, look')"],
@@ -93,7 +88,7 @@ var scenario = {
         ]
     },
     two: { //the lights are now on
-        image: "https://s9.postimg.org/eceo9mp73/5860028206_d66810105f_b.jpg", //dog
+        image: "images/2.png", 
         text: "Crystal walls twinkle, shimmering in and out; however, inside the room lays ramshackled pieces. Ramen bowls are piled into a tiny trashcan. Sheets of paper cover the floor along with some laptops and tablets on a glass table.  A large ornate door covered in golden designs looms overhead. The windows are draped with long black curtains.",
         functionNames: [
             ["help", "changeHintText('commands: help, examine, look')"],
@@ -109,6 +104,7 @@ var scenario = {
 
 var lightbulbscenario = {
     one: {
+        image:"images/lightbulb1.png",
         text: "You walk towards the lightswitch, you hear the sound of crunching.",
         functionNames: [
             ["help", "changeHintText('commands: help, examine, look')"],
@@ -117,25 +113,27 @@ var lightbulbscenario = {
         ]
     },
     two: {
+        image:"images/lightbulb2.png",
         text: "It appears to look like the outline of a lightswitch; however it appears to have been engraved into the wall. Above the lightswitch outline is a shimmering plaque.",
         functionNames: [
             ["help", "changeHintText('commands: help, examine, read')"],
             ["examine", "changeHintText('examine what?')"],
             ["examineplaque", "advanceTo(lightbulbscenario.three); codeBoxOn();"],
             ["readplaque", "advanceTo(lightbulbscenario.three); codeBoxOn();"],
-
         ]
     },
     three: {
+        image:"images/lightbulb3.png",
         text: "The plaque has the words bool lightswitch=False. Next to the plaque however appears to be a little keypad.  As you place your fingers on the keypad, a groan rumbles through the clearing as light emanates from the keys. You can only type one line into the keypad.",
         functionNames: [
             ["help", "changeHintText('write the correct code in the code box. commands: back')"],
             ["back", "advanceTo(lightbulbscenario.two); codeBoxOff();"]
         ],
         correctAnswers: ["lightswitch=true;", "skip"],
-        correctScenario: "advanceTo(lightbulbscenario.four); lightsOn = true;"
+        correctScenario: "advanceTo(lightbulbscenario.four); document.body.style.background = 'white'; document.body.style.color = 'black';"
     },
     four: {
+        image:"images/lightbulb4.png",
         text: "Light floods the room, radiating somehow from the center of the walls.",
         functionNames: [
             ["help", "changeHintText('commands: return')"],
@@ -199,5 +197,5 @@ var bagscenario = {
     
 }
 
-currentScenario = scenario.two;
+currentScenario = scenario.one;
 advanceTo(currentScenario);
