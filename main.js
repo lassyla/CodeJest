@@ -104,9 +104,6 @@ var scenario = {
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["examinetrash", "advanceTo(trashscenario.one)"],
             ["examinetrashcan", "advanceTo(trashscenario.one)"],
-            ["examinepaper", "advanceTo(paperscenario.one)"],
-            ["examinesheets", "advanceTo(paperscenario.one)"],
-            ["examinepapersheets", "advanceTo(paperscenario.one)"],
             ["examinelaptop", "advanceTo(laptopscenario.one)"],
             ["examinewallplaque", "advanceTo(wallscenario.one); codeBoxOn();"],
             ["examinewall", "advanceTo(wallscenario.one); codeBoxOn();"],
@@ -117,15 +114,7 @@ var scenario = {
         ]
     }
 };
-            
-var paperscenario = {
-    one: 
-            text: "Why is this room like this? It hates me. Count. The answer was naming the variable count all along. They’re variables! It doesn’t matter what they’re called, it all functions the same. It could be called anything, but for some reason it only accepts count. Int, int int Look at all the ints in the world. Intersect, integrity, intuition, integer. Ah integers, they're so whole and nice. Such nice numbers sometimes negatives, sometimes positive but always whole. “Words a character and a character in a string… will hold humanity forever spellbound” what a nice song. Thank god for earbuds and music keeping me sane! Loopity loops around we go. Again and again and again and again. For is as long starting with 0 to whatever you need, up you increment 1. But while, while up or down you go but when you’ll end you’ll never know… until you end that is. Equals equals everywhere. One equals to set but two to compare. One is alone, a matchmaker on it’s own, destined to set to things together. Two, however, brings the gossip about to compare whether equal or not. Floats and integers go hand and hand yet clash as the difference is clear. Floats can go beyond the whole number, while integers cannot split into anything but whole. ! Oh ! You excite me so much. You split up the double equals and turn equals into nots.",
-            functionNames: [
-                helpOptions,
-                backToStart,
-            ],
-}
+           
 
 var lightbulbscenario = {
     one: {
