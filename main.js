@@ -181,7 +181,7 @@ var trashscenario = {
         text: "The ramenbowls all vanish leaving behind a small slip of paper in the trash can.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
-            ["examinepaper", "advanceTo(trashscenario.three_riddle)"],
+            ["examinepaper", "advanceTo(trashscenario.three_riddle); addRiddle('The paper reads Hidden in a pile lies the note sealed shut. 15 page flips must be done before the answer can be revealed.')"],
             ["back", "advanceTo(scenario.two);"],
         ],
     },
@@ -245,7 +245,7 @@ var laptopscenario = {
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["back", "advanceTo(laptopscenario.one); codeBoxOff();"],
-            ["1", "advanceTo(laptopscenario.three_riddle)"],
+            ["1", "advanceTo(laptopscenario.three_riddle); addRiddle('If even go through and let it be, but if odd divide by two it must become.')"],
         ],
     },
 
@@ -265,7 +265,7 @@ var laptopscenario = {
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["back", "advanceTo(laptop.two); codeBoxOff();"],
-            ["13", "advanceTo(laptopscenario.four_riddle); codeBoxOff();"],
+            ["13", "advanceTo(laptopscenario.four_riddle); codeBoxOff(); addRiddle('The door that shifts follows the cycle around and around it goes. Too fast to truly read but slow enough to see, the shifts to the answer is the key.')"],
         ],
     },
 
@@ -312,7 +312,7 @@ var wallscenario = {
             backToStart,
         ],
         correctAnswers: ["10", "skip"],
-        correctScenario: "advanceTo(wallscenario.three); codeBoxOff();"
+        correctScenario: "advanceTo(wallscenario.three); codeBoxOff(); addRiddle('The PEMDAS comes to play once again as operations never truly go away. Times is times and adds is adds however squares and roots are not quite the same. Let x be 5 and y be 10 and the second will come to play');"
     },
     three: {
 
@@ -373,20 +373,26 @@ var pilescenario = {
             backToStart,
         ],
         correctAnswers: ["for (int pageNum=0; pageNum<151; pageNum++)", "for (int pageNum=0; pageNum<151", "pageNum+=1)", "for (int pageNum=0; pageNum<151; pageNum=pageNum+1)", "skip"],
-        correctScenario: "advanceTo(pilescenario.three); codeBoxOff();",
-        three: {
-            image: "images/pile3.png",
-            text: "The notepad flips page by page until finally it stops at page 150. It reads: <p>Within the artificial lights the answers await. But each light holds a different heart. To solve the first know what remains is the percent and the 3 marks the x on the spot. </p>",
-            functionNames: [
-                helpOptions,
-                backToStart,
-            ],
-        }
+        correctScenario: "advanceTo(pilescenario.three); codeBoxOff(); addRiddle('Within the artificial lights the answers await. But each light holds a different heart. To solve the first know what remains is the percent and the 3 marks the x on the spot.');"
+    },
+    three: {
+        image: "images/pile3.png",
+        text: "The notepad flips page by page until finally it stops at page 150. It reads: <p>Within the artificial lights the answers await. But each light holds a different heart. To solve the first know what remains is the percent and the 3 marks the x on the spot. </p>",
+        functionNames: [
+            helpOptions,
+            backToStart,
+        ],
     }
-
-
-
+    
 }
+
 
 currentScenario = scenario.one;
 advanceTo(currentScenario);
+addRiddle('Why is this room like this? It hates me. Count. The answer was naming the variable count all along. They’re variables! It doesn’t matter what they’re called, it all functions the same. It could be called anything, but for some reason it only accepts count. '); 
+addRiddle('Int, int int Look at all the ints in the world. Intersect, integrity, intuition, integer. Ah integers, theyre so whole and nice.  Such nice numbers sometimes negatives,  sometimes positive but always whole.'); 
+addRiddle("Loopity loops around we go. Again and again and again and again. For is as long starting with 0 to whatever you need, up you increment 1. But while, while up or down you go but when you’ll end you’ll never know… until you end that is."); 
+addRiddle(); 
+addRiddle("Equals equals everywhere. One equals to set but two to compare. One is alone, a matchmaker on it’s own, destined to set to things together. Two, however, brings the gossip about to compare whether equal or not. "); 
+addRiddle("Floats and integers go hand and hand yet clash as the difference is clear. Floats can go beyond the whole number, while integers cannot split into anything but whole."); 
+addRiddle("! Oh ! You excite me so much. You split up the double equals and turn equals into nots."); 
