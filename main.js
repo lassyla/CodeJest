@@ -11,7 +11,7 @@ var currentScenario;
 
 textBox.onkeypress = function(event) {
     if (event.key == "Enter" || event.keyCode == 13) {
-        parseInput(textBox.value, currentScenario);
+        parseInput(textBox.value);
         textBox.value = "";
     }
 };
@@ -19,18 +19,31 @@ textBox.onkeypress = function(event) {
 codeTextBox.onkeypress = function(event) {
     if (event.key == "Enter" || event.keyCode == 13) {
         evaluateAnswer(codeTextBox.value);
-        codeTextBox.value = "";
     }
 };
 
 var evaluateAnswer = function(answer) {
+    answer = answer.toLowerCase();
+    answer = answer.replace(/\s/g, ''); 
     for (var i = 0; i < currentScenario.correctAnswers.length; i++)
         if (answer == currentScenario.correctAnswers[i]) {
+            codeTextBox.value = ""; 
             eval(currentScenario.correctScenario);
             codeBoxOff();
             return;
         }
-    changeHintText("that was incorrect. hints: semicolon.");
+    changeHintText("that was incorrect.");
+}
+
+var parseInput = function(input) {
+    input = input.toLowerCase(); 
+    input = input.replace(/\s/g, ''); 
+    for (var i = 0; i < currentScenario.functionNames.length; i++)
+        if (input == currentScenario.functionNames[i][0]) {
+            eval(currentScenario.functionNames[i][1]);
+            return;
+        }
+    changeHintText("you can't do that. type 'help' to see what you can do.");
 }
 
 var changeText = function(words) {
@@ -53,21 +66,12 @@ var changeButtons = function(buttonList) {
     }
 };
 
-var advanceTo = function(nextscenario) {
-    changeImage(nextscenario.image)
-    changeText(nextscenario.text)
-    currentScenario = nextscenario;
+var advanceTo = function(nextScenario) {
+    //changeImage(nextscenario.image)
+    console.log(nextScenario)
+    changeText(nextScenario.text)
+    currentScenario = nextScenario;
 };
-
-var parseInput = function(input) {
-    //var inputs = split[input]; 
-    for (var i = 0; i < currentScenario.functionNames.length; i++)
-        if (input == currentScenario.functionNames[i][0]) {
-            eval(currentScenario.functionNames[i][1]);
-            return;
-        }
-    changeHintText("you can't do that. type 'help' to see what you can do.");
-}
 
 var codeBoxOn = function() {
     codeTextBox.style.visibility = "visible";
@@ -86,38 +90,20 @@ var scenario = {
         functionNames: [
             ["help", "changeHintText('commands: help, examine, look')"],
             ["examine", "advanceTo(lightbulbscenario.one)"],
-            ["look", "advanceTo(scenario.three)"]
         ]
     },
-    two: {
-        image: "https://s9.postimg.org/9p8m7v1u7/6899639786_d517c4cce3_z.jpg", //house
-        text: "you examined something. what now?",
-        functionNames: [
-            ["help", "changeHintText('commands: help, examine, look')"],
-            ["examine", "advanceTo(scenario.two)"],
-            ["look", "advanceTo(scenario.three)"]
-        ]
-    },
-    three: {
-        image: "https://s4.postimg.org/t1g20apst/261819008_d4316c1bdf_o.jpg",
-        text: "You looked at something. what now?",
-        functionNames: [
-            ["help", "changeHintText('commands: help, examine, look')"],
-            ["examine", "advanceTo(scenario.two)"],
-            ["look", "advanceTo(scenario.three)"]
-        ]
-    },
-    four: { //the lights are now on
+    two: { //the lights are now on
         image: "https://s9.postimg.org/eceo9mp73/5860028206_d66810105f_b.jpg", //dog
-        text: "Crystal walls twinkle, shimmering in and out; however, inside the room lays ramshackled pieces. Ramen bowls are piled into a tiny trashcan. Sheets of paper cover the floor along with some laptops and tablets on a glass table.  A large ornate door covered in golden designs looms overhead. The windows are draped with long black curtains."
+        text: "Crystal walls twinkle, shimmering in and out; however, inside the room lays ramshackled pieces. Ramen bowls are piled into a tiny trashcan. Sheets of paper cover the floor along with some laptops and tablets on a glass table.  A large ornate door covered in golden designs looms overhead. The windows are draped with long black curtains.",
         functionNames: [
             ["help", "changeHintText('commands: help, examine, look')"],
-            ["examine", "advanceTo(lightbulbscenario.one)"],
-            ["look", "advanceTo(scenario.three)"]
+            ["examine", "changeHintText('examine what?')"],
+            ["examinetrash", "advanceTo(trashscenario.one)"],
+            ["examinetrashcan", "advanceTo(trashscenario.one)"],
+            ["examinepaper", "advanceTo(paperscenario.one)"],
+            ["examinesheets", "advanceTo(paperscenario.one)"],
+            ["examinepapersheets", "advanceTo(paperscenario.one)"],
         ]
-
-
-
     }
 };
 
@@ -133,8 +119,11 @@ var lightbulbscenario = {
     two: {
         text: "It appears to look like the outline of a lightswitch; however it appears to have been engraved into the wall. Above the lightswitch outline is a shimmering plaque.",
         functionNames: [
-            ["help", "changeHintText('commands: help, examine')"],
-            ["examine", "advanceTo(lightbulbscenario.three); codeBoxOn();"],
+            ["help", "changeHintText('commands: help, examine, read')"],
+            ["examine", "changeHintText('examine what?')"],
+            ["examineplaque", "advanceTo(lightbulbscenario.three); codeBoxOn();"],
+            ["readplaque", "advanceTo(lightbulbscenario.three); codeBoxOn();"],
+
         ]
     },
     three: {
@@ -143,20 +132,72 @@ var lightbulbscenario = {
             ["help", "changeHintText('write the correct code in the code box. commands: back')"],
             ["back", "advanceTo(lightbulbscenario.two); codeBoxOff();"]
         ],
-        correctAnswers: ["bool lightswitch = true;", "skip"],
+        correctAnswers: ["lightswitch=true;", "skip"],
         correctScenario: "advanceTo(lightbulbscenario.four); lightsOn = true;"
     },
     four: {
         text: "Light floods the room, radiating somehow from the center of the walls.",
         functionNames: [
             ["help", "changeHintText('commands: return')"],
-            ["return", "advanceTo(scenario.four)"]
+            ["return", "advanceTo(scenario.two)"]
         ],
     }
 }
 
+var trashscenario = {
+    one: {
+        text: "As you peer through the trash can, you see ramen bowls piled in the trash can. Above the trash can is a dimly lit plaque.", 
+        functionNames: [
+            ["help", "changeHintText('commands: examine, read, back')"],
+            ["examine", "changeHintText('examine what?')"],
+            ["read", "changeHintText('read what?')"],
+            ["readplaque", "advanceTo(trashscenario.two); codeBoxOn();"],
+            ["examineplaque", "advanceTo(trashscenario.two); codeBoxOn();"],
+            ["back", "advanceTo(trashscenario.two)"],
+        ]
+    },
+    two: {
+        text: "The plaque has the words int ramenBowls=30 . Next to the plaque is a keypad.", 
+        functionNames: [
+            ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+            ["examine", "changeHintText('examine what?')"],
+            ["back", "advanceTo(trashscenario.two); codeBoxOff();"],
+        ],
+        correctAnswers: ["ramenBowls=0", "skip"], 
+        correctScenario: "advanceTo(trashscenario.three)"
+    },
+    three: {
+        text: "The ramenbowls all vanish leaving behind a small slip of paper in the trash can."
+    }
+}
 
+var laptopscenario = {
+    
+    
+}
 
+var wallscenario = {
+    
+}
 
-currentScenario = scenario.one;
+var bookscenario = {
+    
+    
+    
+}
+
+var paperscenario = {
+    one: {
+    
+        
+    }
+    
+}
+
+var bagscenario = {
+    
+    
+}
+
+currentScenario = scenario.two;
 advanceTo(currentScenario);
