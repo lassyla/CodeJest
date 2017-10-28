@@ -165,14 +165,113 @@ var trashscenario = {
         correctScenario: "advanceTo(trashscenario.three)"
     },
     three: {
-        text: "The ramenbowls all vanish leaving behind a small slip of paper in the trash can."
+        text: "The ramenbowls all vanish leaving behind a small slip of paper in the trash can.",
+        functionNames: [
+            ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+            ["examine", "changeHintText('examine what?')"],
+            ["examinepaper", "advanceTo(trashscenario.three_riddle)"],
+            ["back", "advanceTo(trashscenario.two);"],
+        ],
+    },
+    three_riddle: {
+        text: 'The paper reads Hidden in a pile lies the note sealed shut. 15 page flips must be done before the answer can be revealed."',
+        functionNames: [
+            ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+            ["examine", "changeHintText('examine what?')"],
+            ["back", "advanceTo(trashscenario.two); codeBoxOff();"],
+        ],
     }
 }
 
+
 var laptopscenario = {
-    
+  one: {
+    text: "Wow look. More random shit. There seems to be a tablet and two laptops. They all have something on their screens. I guess you should pick one to interact with: tablet, laptop 1, laptop 2", 
+    functionNames: [
+      ["help", "changeHintText('commands: examine, read, back')"],
+      ["examine", "changeHintText('examine what?')"],
+      ["examinetablet", "advanceTo(laptopscenario.two);"],
+      ["examinelaptop1", "advanceTo(laptopscenario.three);"],
+      ["examinelaptop2", "advanceTo(laptopscenario.four)"],
+      ["back", "advanceTo(scenario.one)"],
+    ]
+  },
+  transition:{
+    text:"So that device is done. How do you know? You don't. Just roll with it. What should we do now?",
+    functionNames: [
+      ["help", "changeHintText('commands: examine, read, back')"],
+      ["examine", "changeHintText('examine what?')"],
+      ["examinetablet", "advanceTo(laptopscenario.two);"],
+      ["examinelaptop1", "advanceTo(laptopscenario.three);"],
+      ["examinelaptop2", "advanceTo(laptopscenario.four)"],
+      ["back", "advanceTo(scenario.one)"],
+    ]
+  },
+  two: {
+    text: 'The tablet displays the line “x+15-y*13=password”. You push a random button again, because that’s how things works here apparently,  and the text is suddenly replaced with “input password:”',
+    functionNames: [
+      ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+      ["examine", "changeHintText('examine what?')"],
+      ["back", "advanceTo(laptopscenario.one); codeBoxOff();"],
+      ["-110", "advanceTo(laptopscenario.three_riddle)"],
+    ],
+  },
+  two_riddle: {
+    text: 'whatever the tablet riddle was',
+    functionNames: [
+      ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+      ["examine", "changeHintText('examine what? the riddle I guess? but you're already examining it!')"],
+      ["back", "advanceTo(laptopscenario.transition); codeBoxOff();"],
+    ],
+  },  
+  three: {
+    text: 'The laptop displays “x%2=password”. You decide to tap a random key, and suddenly the text is replaced with “input password: “', 
+    functionNames: [
+      ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+      ["examine", "changeHintText('examine what?')"],
+      ["back", "advanceTo(laptopscenario.one); codeBoxOff();"],
+      ["1", "advanceTo(laptopscenario.three_riddle)"],
+    ],
+  },
+  three_riddle: {
+    text: 'The laptop now displays a riddle: "If even go through and let it be, but if odd divide by two it must become."',
+    functionNames: [
+      ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+      ["examine", "changeHintText('examine what? the riddle I guess? but you're already examining it!')"],
+      ["back", "advanceTo(laptopscenario.transition); codeBoxOff();"],
+    ],
+  }, 
+  four: {
+    text: 'The laptop displays “The password lies in the number of spins before it dies and starts once more. Answer:',
+    functionNames: [
+      ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+      ["examine", "changeHintText('examine what?')"],
+      ["back", "advanceTo(laptop.two); codeBoxOff();"],
+      ["13", "advanceTo(laptopscenario.four_riddle); codeBoxOff();"],
+    ],
+  },
+  four_riddle: {
+    text: 'The laptop unlocks and a riddle appears: “The door that shifts follows the cycle around and around it goes. Too fast to truly read but slow enough to see, the shifts to the answer is the key."',
+    functionNames: [
+       ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+       ["examine", "changeHintText('examine what?')"],
+       ["back", "advanceTo(laptopscenario.end); codeBoxOff();"],
+     ],
+  },
+  end: {
+    text: "Well that seems to be all that needs to be done in this area. You can revisit these devices at any time to view the riddles again.",
+    functionNames: [
+      ["help", "changeHintText('commands: examine, read, back')"],
+      ["examine", "changeHintText('examine what?')"],
+      ["examinetablet", "advanceTo(laptopscenario.two);"],
+      ["examinelaptop1", "advanceTo(laptopscenario.three);"],
+      ["examinelaptop2", "advanceTo(laptopscenario.four)"],
+      ["back", "advanceTo(scenario.two)"],
+     ],
+  },
     
 }
+
 
 var wallscenario = {
     
