@@ -292,6 +292,7 @@ var laptopscenario = {
 
 var wallscenario = {
     one: {
+        image:"images/wall1.png"
         text: "Unlike normal, the plaque has no obvious object next to it. You can just make out the barely visible words pulsing lightly. They seem to say <p> string status = \“invisible\”; <\p> As normal however, there is a keypad. What will you enter in?",
         functionNames: [
             helpOptions,
@@ -301,7 +302,8 @@ var wallscenario = {
         correctScenario: "advanceTo(wallscenario.two); codeBoxOn();"
     },
     two: {
-        //<span style="font-family:Consolas">
+
+        image:"images/wall2.png"
         text: "A box materializes in front of you. Although worn and rusted, the image of a plaid dragon curling around sides is unmistakeable. Centered in the front are the words <p>If luck==10: <br>&nbsp&nbsp&nbsp boxUnlock=True; <br> Else: <br>&nbsp&nbsp&nbsp boxUnlock=False;<br>\\\With only one line change allowed, the outside can change but the inside is locked <\span><\p> On the side of the box curled in the dragon's talons is a small keypad. You place your hand on the keypad. What do you want to enter?",
         functionNames: [
             helpOptions,
@@ -311,6 +313,8 @@ var wallscenario = {
         correctScenario: "advanceTo(wallscenario.three); codeBoxOff();"
     },
     three: {
+
+        image:"images/wall3.png"
         text: "The dragon uncoils the the box unlocks revealing another sheet of paper: \"The PEMDAS comes to play once again as operations never truly go away. Times is times and adds is adds however squares and roots are not quite the same. Let x be 5 and y be 10 and the second will come to play\".",
         functionNames: [
             helpOptions,
@@ -321,83 +325,63 @@ var wallscenario = {
 
 
 var topscenario = {
-  one:{
-    Text: “Going towards the table the top suddenly stutters to a stop. For a few seconds it lays still on the table before once again it begins to spin. Underneath the top lies a plaque. ”,
-     functionNames: [
-        helpOptions,
-        backToStart,
-        ["examineplaque", "advanceTo(topscenario.two); codeBoxOn();"],
-      ],
+    one: {
+        image: "images/top2.png",
+        text: “Going towards the table the top suddenly stutters to a stop.For a few seconds it lays still on the table before once again it begins to spin.Underneath the top lies a plaque.”,
+        functionNames: [
+            helpOptions,
+            backToStart, ["examineplaque", "advanceTo(topscenario.two); codeBoxOn();"],
+        ],
     },
-    two:{
-      Text:"The plaque reads simply:<p>int x;<br>While spinning==True:<br>x;<br>\\\Change a single line  <\p>You place your hands on the keypad.”,
-      functionNames: [
-        helpOptions,
-        backToStart,
-      ],
-      correctAnswers: [x=x+1,x+=1,x=x++, "skip"], 
-      correctScenario: "advanceTo(wallscenario.three); codeBoxOff();",
-  three:{    //<span style="font-family:Consolas">
-      Text:”You wait at the top spins until finally it comes to a stop. 241 is returned as a number. 
-  ”}
-      functionNames: [
-        helpOptions,
-        backToStart,
-      ],
+    two: {
+        image: "images/top1.png",
+        Text: "The plaque reads simply:<p>int x;<br>While spinning==True:<br>x;<br>\\\Change a single line  <\p>You place your hands on the keypad.”,
+        functionNames: [
+            helpOptions,
+            backToStart,
+        ],
+        correctAnswers: [x = x + 1, x += 1, x = x++, "skip"],
+        correctScenario: "advanceTo(wallscenario.three); codeBoxOff();",
+    },
+        three: {
+            image: "images/top3.png",
+            Text: ”You wait at the top spins until
+            finally it comes to a stop .241 is returned as a number.”, 
+            functionNames: [
+            helpOptions,
+            backToStart,
+        ],
+    }
+
 }
 
-
-
-var topscenario={
-one:{
-	text: “Going towards the table the top suddenly stutters to a stop. For a few seconds it lays still on the table before once again it begins to spin. Underneath the top lies a plaque. ”,
-    functionNames: [
-      helpOptions,
-      backToStart,
-      ["examineplaque", "advanceTo(topscenario.two); codeBoxOn();"],
-    ],
-  },
-  two:{
-    Text:"The plaque reads simply:<p>int x;<br>While spinning==True:<br>x;<br>\\\Change a single line  <\p>You place your hands on the keypad.”,
-    functionNames: [
-      helpOptions,
-      backToStart,
-    ],
-    correctAnswers: ["x=x+1,x++,x+=1", "skip"], 
-    correctScenario: "advanceTo(topscenario.three); codeBoxOff();",
-three:{   
-    text:""}
-    functionNames: [
-      helpOptions,
-      backToStart,
-    ],
-  }
-
-
-var pilescenario={
-  one:{
-	text: "You search through the pile to find a sealed notepad. Pulling it out, you place it on the table next to the disconnected keypad and plaque. Instantly, the plaque whirls to life.",    functionNames: [
-      helpOptions,
-      backToStart,
-      ["examineplaque", "advanceTo(pilescenario.two); codeBoxOn();"],
-    ],
-  },
-  two:{
-    text:"The plaque reads simply:<p> int pageNum=0;<b>for (): <b>#num is the number on the door, the rest is up to you<\p>You place your hands on the keypad.”,
-    functionNames: [
-      helpOptions,
-      backToStart,
-    ],
-    correctAnswers: ["for (int pageNum=0; pageNum<151; pageNum++)","for (int pageNum=0; pageNum<151","pageNum+=1)","for (int pageNum=0; pageNum<151; pageNum=pageNum+1)", "skip"], 
-    correctScenario: "advanceTo(pilescenario.three); codeBoxOff();",
-  three:{  
-    text:"The notepad flips page by page until finally it stops at page 150. It reads: <p>Within the artificial lights the answers await. But each light holds a different heart. To solve the first know what remains is the percent and the 3 marks the x on the spot. </p>",
-    functionNames: [
-      helpOptions,
-      backToStart,
-    ],
-  }
-}
+var pilescenario = {
+    one: {
+        image: "images/pile1.png",
+        text: "You search through the pile to find a sealed notepad. Pulling it out, you place it on the table next to the disconnected keypad and plaque. Instantly, the plaque whirls to life.",
+        functionNames: [
+            helpOptions,
+            backToStart, ["examineplaque", "advanceTo(pilescenario.two); codeBoxOn();"],
+        ],
+    },
+    two: {
+        image: "images/pile2.png",
+        text: "The plaque reads simply:<p> int pageNum=0;<b>for (): <b>#num is the number on the door, the rest is up to you<\p>You place your hands on the keypad.”,
+        functionNames: [
+            helpOptions,
+            backToStart,
+        ],
+        correctAnswers: ["for (int pageNum=0; pageNum<151; pageNum++)", "for (int pageNum=0; pageNum<151", "pageNum+=1)", "for (int pageNum=0; pageNum<151; pageNum=pageNum+1)", "skip"],
+        correctScenario: "advanceTo(pilescenario.three); codeBoxOff();",
+        three: {
+            image: "images/pile3.png",
+            text: "The notepad flips page by page until finally it stops at page 150. It reads: <p>Within the artificial lights the answers await. But each light holds a different heart. To solve the first know what remains is the percent and the 3 marks the x on the spot. </p>",
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+        }
+    }
 
 
 
