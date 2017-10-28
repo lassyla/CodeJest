@@ -1,5 +1,5 @@
 //HTML element variables
-var image = document.getElementById("image");
+var images = document.getElementById("images");
 var text = document.getElementById("text");
 var hintText = document.getElementById("hinttext");
 var buttonBox = document.getElementById('buttonBox');
@@ -55,6 +55,10 @@ var changeHintText = function(words) {
     hinttext.innerHTML = words;
 };
 
+var changeImage = function(img) {
+    images.style.backgroundImage = "url(" + img + ")";
+};
+
 var changeButtons = function(buttonList) {
     buttonBox.innerHTML = "";
     for (var i = 0; i < buttonList.length; i++) {
@@ -63,8 +67,9 @@ var changeButtons = function(buttonList) {
 };
 
 var advanceTo = function(nextScenario) {
-    image.src = nextScenario.image;
-    changeText(nextScenario.text) 
+    //changeImage(nextscenario.image)
+    console.log(nextScenario)
+    changeText(nextScenario.text)
     currentScenario = nextScenario;
 };
 
@@ -170,7 +175,7 @@ var trashscenario = {
             ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
             ["examine", "changeHintText('examine what?')"],
             ["examinepaper", "advanceTo(trashscenario.three_riddle)"],
-            ["back", "advanceTo(trashscenario.two);"],
+            ["back", "advanceTo(scenario.two);"],
         ],
     },
     three_riddle: {
@@ -178,11 +183,10 @@ var trashscenario = {
         functionNames: [
             ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
             ["examine", "changeHintText('examine what?')"],
-            ["back", "advanceTo(trashscenario.two); codeBoxOff();"],
+            ["back", "advanceTo(scenario.two); codeBoxOff();"],
         ],
     }
 }
-
 
 var laptopscenario = {
   one: {
@@ -196,6 +200,7 @@ var laptopscenario = {
       ["back", "advanceTo(scenario.one)"],
     ]
   },
+  
   transition:{
     text:"So that device is done. How do you know? You don't. Just roll with it. What should we do now?",
     functionNames: [
@@ -207,6 +212,7 @@ var laptopscenario = {
       ["back", "advanceTo(scenario.one)"],
     ]
   },
+  
   two: {
     text: 'The tablet displays the line “x+15-y*13=password”. You push a random button again, because that’s how things works here apparently,  and the text is suddenly replaced with “input password:”',
     functionNames: [
@@ -216,14 +222,16 @@ var laptopscenario = {
       ["-110", "advanceTo(laptopscenario.three_riddle)"],
     ],
   },
+  
   two_riddle: {
-    text: 'whatever the tablet riddle was',
+    text: 'whatever the tablet riddle',
     functionNames: [
       ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
       ["examine", "changeHintText('examine what? the riddle I guess? but you're already examining it!')"],
       ["back", "advanceTo(laptopscenario.transition); codeBoxOff();"],
     ],
-  },  
+  },
+      
   three: {
     text: 'The laptop displays “x%2=password”. You decide to tap a random key, and suddenly the text is replaced with “input password: “', 
     functionNames: [
@@ -233,6 +241,7 @@ var laptopscenario = {
       ["1", "advanceTo(laptopscenario.three_riddle)"],
     ],
   },
+  
   three_riddle: {
     text: 'The laptop now displays a riddle: "If even go through and let it be, but if odd divide by two it must become."',
     functionNames: [
@@ -240,16 +249,19 @@ var laptopscenario = {
       ["examine", "changeHintText('examine what? the riddle I guess? but you're already examining it!')"],
       ["back", "advanceTo(laptopscenario.transition); codeBoxOff();"],
     ],
-  }, 
-  four: {
-    text: 'The laptop displays “The password lies in the number of spins before it dies and starts once more. Answer:',
-    functionNames: [
-      ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
-      ["examine", "changeHintText('examine what?')"],
-      ["back", "advanceTo(laptop.two); codeBoxOff();"],
-      ["13", "advanceTo(laptopscenario.four_riddle); codeBoxOff();"],
-    ],
   },
+  
+    
+   four: {
+     text: 'The laptop displays “The password lies in the number of spins before it dies and starts once more. Answer:',
+     functionNames: [
+       ["help", "changeHintText('write your code in the lower box. commands: examine, read')"],
+       ["examine", "changeHintText('examine what?')"],
+       ["back", "advanceTo(laptop.two); codeBoxOff();"],
+       ["13", "advanceTo(laptopscenario.four_riddle); codeBoxOff();"],
+     ],
+    },
+  
   four_riddle: {
     text: 'The laptop unlocks and a riddle appears: “The door that shifts follows the cycle around and around it goes. Too fast to truly read but slow enough to see, the shifts to the answer is the key."',
     functionNames: [
@@ -258,6 +270,7 @@ var laptopscenario = {
        ["back", "advanceTo(laptopscenario.end); codeBoxOff();"],
      ],
   },
+  
   end: {
     text: "Well that seems to be all that needs to be done in this area. You can revisit these devices at any time to view the riddles again.",
     functionNames: [
@@ -271,7 +284,6 @@ var laptopscenario = {
   },
     
 }
-
 
 var wallscenario = {
     
