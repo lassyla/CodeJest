@@ -1,5 +1,5 @@
 //HTML element variables
-var images = document.getElementById("images");
+var image = document.getElementById("image");
 var text = document.getElementById("text");
 var hintText = document.getElementById("hintText");
 var buttonBox = document.getElementById('buttonBox');
@@ -58,9 +58,6 @@ var changeHintText = function(words) {
     hintText.innerHTML = words;
 };
 
-var changeImage = function(img) {
-    images.style.backgroundImage = "url(" + img + ")";
-};
 
 var changeButtons = function(buttonList) {
     buttonBox.innerHTML = "";
@@ -70,9 +67,9 @@ var changeButtons = function(buttonList) {
 };
 
 var advanceTo = function(nextScenario) {
-    //changeImage(nextscenario.image)
-    console.log(nextScenario)
-    changeText(nextScenario.text)
+    image.src = nextScenario.image;
+    console.log(nextScenario);
+    changeText(nextScenario.text);
     currentScenario = nextScenario;
 };
 
