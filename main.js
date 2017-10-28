@@ -99,7 +99,6 @@ var scenario = {
         ]
     },
     two: { //the lights are now on
-        image: "images/2.png",
         text: "Crystal walls twinkle, shimmering in and out; however, inside the room lays ramshackled pieces. Ramen bowls are piled into a tiny trashcan. Sheets of paper cover the floor along with some laptops and tablets on a glass table.  A large ornate door covered in golden designs looms overhead. The windows are draped with long black curtains.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
@@ -109,8 +108,11 @@ var scenario = {
             ["examinesheets", "advanceTo(paperscenario.one)"],
             ["examinepapersheets", "advanceTo(paperscenario.one)"],
             ["examinelaptop", "advanceTo(laptopscenario.one)"],
-            ["examinewallplaque", "advanceTo(wallscenario.one); codeBoxOn();"]
-
+            ["examinewallplaque", "advanceTo(wallscenario.one); codeBoxOn();"],
+            ["examinewall", "advanceTo(wallscenario.one); codeBoxOn();"],
+            ["examinepile", "advanceTo(pilescenario.one); codeBoxOn();"],
+            ["examinepaper", "advanceTo(pilescenario.one); codeBoxOn();"],
+            ["examinewtop", "advanceTo(topscenario.one); codeBoxOn();"]
         ]
     }
 };
@@ -292,18 +294,18 @@ var laptopscenario = {
 
 var wallscenario = {
     one: {
-        image:"images/wall1.png"
+        image:"images/wall1.png",
         text: "Unlike normal, the plaque has no obvious object next to it. You can just make out the barely visible words pulsing lightly. They seem to say <p> string status = \“invisible\”; <\p> As normal however, there is a keypad. What will you enter in?",
         functionNames: [
             helpOptions,
             backToStart,
         ],
-        correctAnswers: ['stringstatus="visible"', "skip"],
+        correctAnswers: ['stringstatus="visible";', "skip"],
         correctScenario: "advanceTo(wallscenario.two); codeBoxOn();"
     },
     two: {
 
-        image:"images/wall2.png"
+        image:"images/wall2.png",
         text: "A box materializes in front of you. Although worn and rusted, the image of a plaid dragon curling around sides is unmistakeable. Centered in the front are the words <p>If luck==10: <br>&nbsp&nbsp&nbsp boxUnlock=True; <br> Else: <br>&nbsp&nbsp&nbsp boxUnlock=False;<br>\\\With only one line change allowed, the outside can change but the inside is locked <\span><\p> On the side of the box curled in the dragon's talons is a small keypad. You place your hand on the keypad. What do you want to enter?",
         functionNames: [
             helpOptions,
@@ -314,7 +316,7 @@ var wallscenario = {
     },
     three: {
 
-        image:"images/wall3.png"
+        image:"images/wall3.png",
         text: "The dragon uncoils the the box unlocks revealing another sheet of paper: \"The PEMDAS comes to play once again as operations never truly go away. Times is times and adds is adds however squares and roots are not quite the same. Let x be 5 and y be 10 and the second will come to play\".",
         functionNames: [
             helpOptions,
@@ -327,7 +329,7 @@ var wallscenario = {
 var topscenario = {
     one: {
         image: "images/top2.png",
-        text: “Going towards the table the top suddenly stutters to a stop.For a few seconds it lays still on the table before once again it begins to spin.Underneath the top lies a plaque.”,
+        text: "Going towards the table the top suddenly stutters to a stop.For a few seconds it lays still on the table before once again it begins to spin. Underneath the top lies a plaque.",
         functionNames: [
             helpOptions,
             backToStart, ["examineplaque", "advanceTo(topscenario.two); codeBoxOn();"],
@@ -335,18 +337,17 @@ var topscenario = {
     },
     two: {
         image: "images/top1.png",
-        Text: "The plaque reads simply:<p>int x;<br>While spinning==True:<br>x;<br>\\\Change a single line  <\p>You place your hands on the keypad.”,
+        text: "The plaque reads simply:<p>int x;<br>While spinning==True:<br>x;<br>\\\Change a single line  <\p>You place your hands on the keypad.",
         functionNames: [
             helpOptions,
             backToStart,
         ],
-        correctAnswers: [x = x + 1, x += 1, x = x++, "skip"],
+        correctAnswers: ["x=x+1;", "x+=1;", "x++;", "skip"],
         correctScenario: "advanceTo(wallscenario.three); codeBoxOff();",
     },
         three: {
             image: "images/top3.png",
-            Text: ”You wait at the top spins until
-            finally it comes to a stop .241 is returned as a number.”, 
+            text: "You wait at the top spins until finally it comes to a stop .241 is returned as a number.", 
             functionNames: [
             helpOptions,
             backToStart,
@@ -366,7 +367,7 @@ var pilescenario = {
     },
     two: {
         image: "images/pile2.png",
-        text: "The plaque reads simply:<p> int pageNum=0;<b>for (): <b>#num is the number on the door, the rest is up to you<\p>You place your hands on the keypad.”,
+        text: "The plaque reads simply:<p> int pageNum=0;<b>for (): <b>#num is the number on the door, the rest is up to you<\p>You place your hands on the keypad",
         functionNames: [
             helpOptions,
             backToStart,
