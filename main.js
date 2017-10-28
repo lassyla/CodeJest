@@ -110,7 +110,9 @@ var scenario = {
             ["examinepaper", "advanceTo(paperscenario.one)"],
             ["examinesheets", "advanceTo(paperscenario.one)"],
             ["examinepapersheets", "advanceTo(paperscenario.one)"],
-            ["examinelaptop", "advanceTo(laptopscenario.one)"]
+            ["examinelaptop", "advanceTo(laptopscenario.one)"],
+            ["examinewallplaque", "advanceTo(wallscenario.one); codeBoxOn();"]
+
         ]
     }
 };
@@ -293,15 +295,15 @@ var laptopscenario = {
     
 }
 
-
 var wallscenario = {
   one: {
-    text: "Unlike normal, the plaque has no obvious object next to it. You can just make out the barely visible words pulsing lightly. They seem to say <p> String status = \“Invisible\”; <\p> As normal however, there is a keypad. Maybe you should touch it.",
+    text: "Unlike normal, the plaque has no obvious object next to it. You can just make out the barely visible words pulsing lightly. They seem to say <p> string status = \“invisible\”; <\p> As normal however, there is a keypad. What will you enter in?",
     functionNames: [
       helpOptions,
       backToStart,
-      ["touchkeypad", "advanceTo(wallscenario.two); codeBoxOn();"],
     ],
+    correctAnswers: ['stringstatus="visible"', "skip"], 
+    correctScenario: "advanceTo(wallscenario.two); codeBoxOn();"
   },
   two:{
     //<span style="font-family:Consolas">
@@ -309,7 +311,6 @@ var wallscenario = {
     functionNames: [
       helpOptions,
       backToStart,
-      ["placehandonkeypad", "advanceTo(wallscenario.two);"],
     ],
     correctAnswers: ["10", "skip"], 
     correctScenario: "advanceTo(wallscenario.three); codeBoxOff();"
