@@ -20,14 +20,10 @@ input {
   font-size: 1em;
   margin-top:15px;
 }
-#buttonBox {
-  text-align:center;
-}
-button{
-  margin-left: 10px;
-  margin-top: 15px;
-  height: 22px;
-  font-size: 14px;
+
+#hinttext{
+    font-size: 1em; 
+    color: gray; 
 }
 
 @media only screen 
