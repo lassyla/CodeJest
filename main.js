@@ -6,7 +6,7 @@ var buttonBox = document.getElementById('buttonBox');
 var textBox = document.getElementById('textBox');
 var codeTextBox = document.getElementById('codeTextBox');
 var noteList = document.getElementById('noteList');
-var helpOptions = ["help", "changeHintText('commands: help, examine, look, return, back')"];
+var helpOptions = ["help", "changeHintText('commands: help, examine, return')"];
 var backToStart = ["return", "advanceTo(scenario.two); codeBoxOff()"];
 
 //player variables
@@ -93,13 +93,13 @@ scenario = {}
 var scenario = {
     one: {
         image: "images/1.png",
-        text: "The room is dark all around. A chill breeze runs through the room resulting in a quiet eerie whistling sound. In the corner of your eye, you can barely make out something that appears to be glowing softly.",
+        text: "You awaken to a familiar yet distinct inky blackness. A chill runs down your spine as the air is completely still around you. You call out hello, but no one responds. As your echoing cry fades away the room is once again submerged into silence. As you turn around slowly, sharp crinkling sounds pierce the silence. A dim light shines from a single wall, vaguely resembling a light switch.",
         functionNames: [
             helpOptions, ["examine", "advanceTo(lightbulbscenario.one)"],
         ]
     },
     two: { //the lights are now on
-        text: "Crystal walls twinkle, shimmering in and out; however, inside the room lays ramshackled pieces. Ramen bowls are piled into a tiny trashcan. Sheets of paper cover the floor along with some laptops and tablets on a glass table.  A large ornate door covered in golden designs looms overhead. The windows are draped with long black curtains.",
+        text: "Papers are everywhere. Covering the floor, piled in corners, crunched into balls... Black ink stains the sharp white walls excluding a single lone plaque resting on the wall. Rising from the paper infested floor a table cowers. Atop the table rests a disconnected keypad, plaque and a single top eerily spinning on its own. Opposite the tables in a small area surprisingly barren of paper two laptops and a tablet are huddled together shining dimly. In the last corner of the room partially buried underneath the paper is a shallow trash can filled with food packages. In front of you a single ornately decorated door looms. While you stare at it for a few seconds, you can’t help feeling disorientated as everything continues to shift resulting in you glancing away.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["examinetrash", "advanceTo(trashscenario.one)"],
@@ -122,12 +122,14 @@ var lightbulbscenario = {
         text: "You walk towards the lightswitch, you hear the sound of crunching.",
         functionNames: [
             helpOptions, ["examine", "advanceTo(lightbulbscenario.two)"],
+            ["examinelight", "advanceTo(lightbulbscenario.two)"],
+            ["examinelightswitch", "advanceTo(lightbulbscenario.two)"],
             ["look", "advanceTo(lightbulbscenario.two)"]
         ]
     },
     two: {
         image: "images/lightbulb2.png",
-        text: "It appears to look like the outline of a lightswitch; however it appears to have been engraved into the wall. Above the lightswitch outline is a shimmering plaque.",
+        text: "You make your way towards the lightswitch, each step accompanied by the sharp crackle of something being crushed. You walk for an oddly long time before finally the light becomes clear. Without a doubt, the dim light resembles a lightswitch, yet instead of protruding from the wall, it appears to be engraved. Above the lightswitch engraving you can just make out the words of the plaque, illuminated by the engraving.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["examineplaque", "advanceTo(lightbulbscenario.three); codeBoxOn();"],
@@ -136,7 +138,7 @@ var lightbulbscenario = {
     },
     three: {
         image: "images/lightbulb3.png",
-        text: "The plaque has the words bool lightsOn = False;. Next to the plaque however appears to be a little keypad.  As you place your fingers on the keypad, a groan rumbles through the clearing as light emanates from the keys. You can only type one line into the keypad.",
+        text: "The plaque has the words bool lightsOn = False;. Right nearby is a single keypad with room for a single line to be entered. Placing your fingers on the keyboard, a sudden groan jolts through the room. Almost as though the room is alive, but of course that would not be possible. Again, silence falls.",
         functionNames: [
             helpOptions, ["back", "advanceTo(lightbulbscenario.two); codeBoxOff();"]
         ],
@@ -145,7 +147,7 @@ var lightbulbscenario = {
     },
     four: {
         image: "images/lightbulb4.png",
-        text: "Light floods the room, radiating somehow from the center of the walls.",
+        text: "The entire room moans for a single instant before light begins to rise. Slow at first, soon enough it begins to flood the room, illuminating every last corner in its incriminating white light.",
         functionNames: [
             helpOptions,
             backToStart,
@@ -156,7 +158,7 @@ var lightbulbscenario = {
 var trashscenario = {
     one: {
         image: "images/trash1.png",
-        text: "As you peer through the trash can, you see waste piled in the trash can. Above the trash can is a dimly lit plaque.",
+        text: "You head towards the trashcan, bushing aside all the pieces of paper to reveal the hole filled with different wrappers. Above the trash can a plaque glows dimly.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["read", "changeHintText('read what?')"],
@@ -167,7 +169,7 @@ var trashscenario = {
     },
     two: {
         image: "images/trash2.png",
-        text: "The plaque has the words int trash = 30; . Next to the plaque is a keypad.",
+        text: "The plaque simply reads Int trash=122; Next to the plaque is once again a single keypad for a single line. As you place your finger on the keypad, once again it comes to life in a quiet groan.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["back", "advanceTo(trashscenario.two); codeBoxOff();"],
@@ -177,7 +179,7 @@ var trashscenario = {
     },
     three: {
         image: "images/trash3.png",
-        text: "The trash vanishes, leaving behind a small slip of paper in the trash can.",
+        text: "Instantly, the trash dematerialized leaving a gaping hole. Surprisingly, it’s shallow enough for you to reach into a pull out a single small piece of paper. ",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["examinepaper", "advanceTo(trashscenario.three_riddle); addRiddle('The paper reads Hidden in a pile lies the note sealed shut. 15 page flips must be done before the answer can be revealed.')"],
@@ -186,7 +188,7 @@ var trashscenario = {
     },
     three_riddle: {
         image: "images/hint.png",
-        text: 'The paper reads Hidden in a pile lies the note sealed shut. 15 page flips must be done before the answer can be revealed."',
+        text: 'It reads: Hidden in a pile lies the the note sealed shut. But one by one it may flip. 151 must be done to begin the next fun."',
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             backToStart,
@@ -197,7 +199,7 @@ var trashscenario = {
 var laptopscenario = {
     one: {
         image: "images/laptop1.png",
-        text: "Wow look. More random shit. There seems to be a tablet and two laptops. They all have something on their screens. I guess you should pick one to interact with: tablet, laptop 1, laptop 2",
+        text: "Going towards the small area barren of paper, you kneel down to look at the three electronic devices. As they glow weakly, you debate which one to use. ",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["examinetablet", "advanceTo(laptopscenario.two);"],
