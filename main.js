@@ -136,11 +136,11 @@ var lightbulbscenario = {
     },
     three: {
         image: "images/lightbulb3.png",
-        text: "The plaque has the words bool lightswitch=False. Next to the plaque however appears to be a little keypad.  As you place your fingers on the keypad, a groan rumbles through the clearing as light emanates from the keys. You can only type one line into the keypad.",
+        text: "The plaque has the words bool lightsOn = False;. Next to the plaque however appears to be a little keypad.  As you place your fingers on the keypad, a groan rumbles through the clearing as light emanates from the keys. You can only type one line into the keypad.",
         functionNames: [
             helpOptions, ["back", "advanceTo(lightbulbscenario.two); codeBoxOff();"]
         ],
-        correctAnswers: ["lightswitch=true;", "skip"],
+        correctAnswers: ["lightson=true;","lightson=true", "skip"],
         correctScenario: "advanceTo(lightbulbscenario.four); document.body.style.background = 'white'; document.body.style.color = 'black';"
     },
     four: {
@@ -156,7 +156,7 @@ var lightbulbscenario = {
 var trashscenario = {
     one: {
         image: "images/trash1.png",
-        text: "As you peer through the trash can, you see ramen bowls piled in the trash can. Above the trash can is a dimly lit plaque.",
+        text: "As you peer through the trash can, you see waste piled in the trash can. Above the trash can is a dimly lit plaque.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["read", "changeHintText('read what?')"],
@@ -167,7 +167,7 @@ var trashscenario = {
     },
     two: {
         image: "images/trash2.png",
-        text: "The plaque has the words int trash=30 . Next to the plaque is a keypad.",
+        text: "The plaque has the words int trash = 30; . Next to the plaque is a keypad.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["back", "advanceTo(trashscenario.two); codeBoxOff();"],
@@ -176,8 +176,8 @@ var trashscenario = {
         correctScenario: "advanceTo(trashscenario.three)"
     },
     three: {
-        image: "images/trash2.png",
-        text: "The ramenbowls all vanish leaving behind a small slip of paper in the trash can.",
+        image: "images/trash3.png",
+        text: "The trash vanishes, leaving behind a small slip of paper in the trash can.",
         functionNames: [
             helpOptions, ["examine", "changeHintText('examine what?')"],
             ["examinepaper", "advanceTo(trashscenario.three_riddle); addRiddle('The paper reads Hidden in a pile lies the note sealed shut. 15 page flips must be done before the answer can be revealed.')"],
@@ -385,7 +385,68 @@ var pilescenario = {
 
 }
 
-
+var door = {
+        one: {
+            text: "You walk towards the door through hordes of paper, coming to a stop in front of the plaque. It reads<p>float count = 0;<br>int key;<br>int num;<br>\\\\num is the number on the door, the rest is up to you<\p>",
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+            correctAnswers: ["key=112;"],
+            correctScenario: "advanceTo(door.two)",
+        },
+        two: {
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+            correctAnswers: ["whilenum!=key:"],
+            correctScenario: "advanceTo(door.three)",
+        },
+        three: {
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+            correctAnswers: ["count+=1"],
+            correctScenario: "advanceTo(door.four)",
+        },
+        four: {
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+            correctAnswers: ["ifcount%2==1"],
+            correctScenario: "advanceTo(door.five)",
+        },
+        five: {
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+            correctAnswers: ["returncount/2"],
+            correctScenario: "advanceTo(door.six)",
+        },
+        six: {
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+            correctAnswers: ["else:"],
+            correctScenario: "advanceTo(door.seven)",
+        },
+        seven: {
+            functionNames: [
+                helpOptions,
+                backToStart,
+            ],
+            correctAnswers: ["returncount"],
+            correctScenario: "advanceTo(door.eight)",
+        },
+        eight: {
+            text: "ENDING: The door creaks open slowly. Relieved, you step out of the room into the soft green grass. Relieved to see nature once more, you gaze around taking in the bright blue sky, chirping birds, and fresh air. After a few moments however, your eyes close and open into a familiar yet distinct inky blackness. You let out a sigh and think simply, “Here we go again, time for part two!"
+        }
+    }
 
 currentScenario = scenario.one;
 advanceTo(currentScenario);
