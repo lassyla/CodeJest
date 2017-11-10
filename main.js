@@ -47,6 +47,8 @@ var parseInput = function(input) {
             return;
         }
     changeHintText("you can't do that. type 'help' to see what you can do.");
+    if(codeTextBox.style.visibiliy == "visible") 
+        changeHintText("you can't do that. type 'help' to see what you can do. make sure to type all code in the code box below."); 
 }
 
 var changeText = function(words) {
@@ -68,17 +70,18 @@ var changeButtons = function(buttonList) {
 
 var advanceTo = function(nextScenario) {
     image.src = nextScenario.image;
-    console.log(nextScenario);
     changeText(nextScenario.text);
     currentScenario = nextScenario;
 };
 
 var codeBoxOn = function() {
     codeTextBox.style.visibility = "visible";
+    codeTextBox.focus(); 
 }
 
 var codeBoxOff = function() {
     codeTextBox.style.visibility = "hidden";
+    textBox.focus(); 
 }
 
 var addRiddle = function(riddle) {
@@ -86,6 +89,16 @@ var addRiddle = function(riddle) {
     child.id = "riddle";
     child.innerHTML = riddle;
     noteList.appendChild(child);
+}
+
+var addDefaultRiddles = function() {
+    addRiddle('Why is this room like this? It hates me. Count. The answer was naming the variable count all along. They’re variables! It doesn’t matter what they’re called, it all functions the same. It could be called anything, but for some reason it only accepts count. '); 
+    addRiddle('Int, int int Look at all the ints in the world. Intersect, integrity, intuition, integer. Ah integers, theyre so whole and nice.  Such nice numbers sometimes negatives,  sometimes positive but always whole.'); 
+    addRiddle("Loopity loops around we go. Again and again and again and again. For is as long starting with 0 to whatever you need, up you increment 1. But while, while up or down you go but when you’ll end you’ll never know… until you end that is."); 
+    addRiddle(); 
+    addRiddle("Equals equals everywhere. One equals to set but two to compare. One is alone, a matchmaker on it’s own, destined to set to things together. Two, however, brings the gossip about to compare whether equal or not. "); 
+    addRiddle("Floats and integers go hand and hand yet clash as the difference is clear. Floats can go beyond the whole number, while integers cannot split into anything but whole."); 
+    addRiddle("! Oh ! You excite me so much. You split up the double equals and turn equals into nots.");  
 }
 
 scenario = {}
@@ -96,6 +109,10 @@ var scenario = {
         text: "You awaken to a familiar yet distinct inky blackness. A chill runs down your spine as the air is completely still around you. You call out hello, but no one responds. As your echoing cry fades away the room is once again submerged into silence. As you turn around slowly, sharp crinkling sounds pierce the silence. A dim light shines from a single wall, vaguely resembling a light switch.",
         functionNames: [
             helpOptions, ["examine", "advanceTo(lightbulbscenario.one)"],
+            helpOptions, ["examinelight", "advanceTo(lightbulbscenario.one)"],
+            helpOptions, ["examinelightswitch", "advanceTo(lightbulbscenario.one)"],
+            helpOptions, ["examineswitch", "advanceTo(lightbulbscenario.one)"],
+
         ]
     },
     two: { //the lights are now on
@@ -105,11 +122,11 @@ var scenario = {
             ["examinetrash", "advanceTo(trashscenario.one)"],
             ["examinetrashcan", "advanceTo(trashscenario.one)"],
             ["examinelaptop", "advanceTo(laptopscenario.one)"],
-            ["examinewallplaque", "advanceTo(wallscenario.one); codeBoxOn();"],
-            ["examinewall", "advanceTo(wallscenario.one); codeBoxOn();"],
-            ["examinepile", "advanceTo(pilescenario.one); codeBoxOn();"],
-            ["examinepaper", "advanceTo(pilescenario.one); codeBoxOn();"],
-            ["examinewtop", "advanceTo(topscenario.one); codeBoxOn();"],
+            ["examinewallplaque", "advanceTo(wallscenario.one); "],
+            ["examinewall", "advanceTo(wallscenario.one); "],
+            ["examinepile", "advanceTo(pilescenario.one); "],
+            ["examinepapers", "addDefaultRiddles();"],
+            ["examinetop", "advanceTo(topscenario.one); "],
             ["examinedoor","advanceTo(door.one);"]
         ]
     }
@@ -125,6 +142,7 @@ var lightbulbscenario = {
             ["examinelight", "advanceTo(lightbulbscenario.two)"],
             ["examinelightswitch", "advanceTo(lightbulbscenario.two)"],
             ["look", "advanceTo(lightbulbscenario.two)"]
+            ["keepgoing", "advanceTo(lightbulbscenario.two)"]
         ]
     },
     two: {
@@ -140,9 +158,9 @@ var lightbulbscenario = {
         image: "images/lightbulb3.png",
         text: "The plaque has the words bool lightsOn = False;. Right nearby is a single keypad with room for a single line to be entered. Placing your fingers on the keyboard, a sudden groan jolts through the room. Almost as though the room is alive, but of course that would not be possible. Again, silence falls.",
         functionNames: [
-            helpOptions, ["back", "advanceTo(lightbulbscenario.two); codeBoxOff();"]
+            helpOptions, ["back", "advanceTo(lightbulbscenario.two); codeBoxOff();"], ["examine", "changeHintText('examine what?')"]
         ],
-        correctAnswers: ["lightson=true;","lightson=true", "skip"],
+        correctAnswers: ["lightson=true;", "skip"],
         correctScenario: "advanceTo(lightbulbscenario.four); document.body.style.background = 'white'; document.body.style.color = 'black';"
     },
     four: {
@@ -151,6 +169,7 @@ var lightbulbscenario = {
         functionNames: [
             helpOptions,
             backToStart,
+            ["examine", "changeHintText('examine what? maybe you should return to the room.')"]
         ],
     }
 }
@@ -452,12 +471,4 @@ var door = {
 
 currentScenario = scenario.one;
 advanceTo(currentScenario);
-
-addRiddle('Why is this room like this? It hates me. Count. The answer was naming the variable count all along. They’re variables! It doesn’t matter what they’re called, it all functions the same. It could be called anything, but for some reason it only accepts count. '); 
-addRiddle('Int, int int Look at all the ints in the world. Intersect, integrity, intuition, integer. Ah integers, theyre so whole and nice.  Such nice numbers sometimes negatives,  sometimes positive but always whole.'); 
-addRiddle("Loopity loops around we go. Again and again and again and again. For is as long starting with 0 to whatever you need, up you increment 1. But while, while up or down you go but when you’ll end you’ll never know… until you end that is."); 
-addRiddle(); 
-addRiddle("Equals equals everywhere. One equals to set but two to compare. One is alone, a matchmaker on it’s own, destined to set to things together. Two, however, brings the gossip about to compare whether equal or not. "); 
-addRiddle("Floats and integers go hand and hand yet clash as the difference is clear. Floats can go beyond the whole number, while integers cannot split into anything but whole."); 
-addRiddle("! Oh ! You excite me so much. You split up the double equals and turn equals into nots."); 
 
